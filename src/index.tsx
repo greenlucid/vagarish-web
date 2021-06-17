@@ -9,8 +9,7 @@ import App from "./App"
 import { BrowserRouter as Router } from "react-router-dom"
 
 const httpLink = createHttpLink({
-  uri: "http://192.168.1.43:4000/graphql",
-  credentials: "include", // TODO change to same-origin before deploy
+  uri: "http://192.168.1.43:4000/graphql"
 })
 
 const client = new ApolloClient({
