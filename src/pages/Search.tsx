@@ -1,16 +1,10 @@
 import { List, ListItem } from "@material-ui/core"
 import MainWrap from "../components/MainWrap"
+import ResultCard from "../components/ResultCard"
 import SearchBar from "../components/SearchBar"
 import useSearch from "../hooks/useSearch"
 import { SearchResult } from "../types"
 import { useURLQuery } from "../utils"
-
-const SearchResultItem: React.FC<{ searchResult: SearchResult }> = ({
-  searchResult,
-}) => {
-  // just testing rn.
-  return <div>{JSON.stringify(searchResult)}</div>
-}
 
 const SearchResultsList: React.FC<{ searchResults: SearchResult[] }> = ({
   searchResults,
@@ -20,7 +14,7 @@ const SearchResultsList: React.FC<{ searchResults: SearchResult[] }> = ({
     <List>
       {searchResults.map((searchResult) => (
         <ListItem key={searchResult.id}>
-          <SearchResultItem searchResult={searchResult} />
+          <ResultCard searchResult={searchResult} />
         </ListItem>
       ))}
     </List>

@@ -8,7 +8,7 @@ const App: React.FC = () => {
       <Route exact path="/">
         <Home />
       </Route>
-      <Route exact path="/search">
+      <Route path="/search">
         <Search />
       </Route>
     </Switch>
