@@ -9,7 +9,7 @@ import App from "./App"
 import { BrowserRouter as Router } from "react-router-dom"
 
 const httpLink = createHttpLink({
-  uri: "http://localhost:4000/graphql"
+  uri: "https://vagarish.forer.es/graphql"
 })
 
 const client = new ApolloClient({
