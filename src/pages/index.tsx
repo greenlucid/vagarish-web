@@ -1,22 +1,34 @@
+import Typography from "@material-ui/core/Typography"
 import MainWrap from "../components/MainWrap"
 import SearchBar from "../components/SearchBar"
+import Box from "@material-ui/core/Box"
+import { makeStyles } from "@material-ui/core"
+
+const useStyles = makeStyles({
+  homePage: {
+    alignContent: "center",
+    width: "90%",
+    margin: "auto",
+    textAlign: "center",
+  },
+  homeSearchBox: {
+    marginTop: "10px",
+  },
+})
 
 const HomeContent: React.FC = () => {
+  const classes = useStyles()
+
   return (
-    <div>
-      <h1>Vagarish</h1>
-      <h2>Kleros Search Engine</h2>
-      <SearchBar />
-      <p>Case and space sensitive. Graphic design is my passion.</p>
-      <p>Current issues I see with this:</p>
-      <ul>
-        <li>
-          pdfs are sometimes not parsed properly, or throw errors and are simply
-          ignored
-        </li>
-        <li>this page is ugly. cannot fix that yet.</li>
-      </ul>
-    </div>
+    <Box className={classes.homePage}>
+      <Typography variant="h1">vagarish</Typography>
+      <Typography variant="h6" color="textSecondary">
+        Search Engine for Kleros
+      </Typography>
+      <Box className={classes.homeSearchBox}>
+        <SearchBar big />
+      </Box>
+    </Box>
   )
 }
 

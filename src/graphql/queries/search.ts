@@ -1,8 +1,10 @@
 import { gql } from "@apollo/client"
 
 const SEARCH = gql`
-  query Search($substring: String!) {
-    search(options: { substring: $substring }) {
+  query Search($substring: String, $klerosLiquidId: Int) {
+    search(
+      options: { substring: $substring, klerosLiquidId: $klerosLiquidId }
+    ) {
       id
       klerosLiquidId
       arbitrable
@@ -12,6 +14,7 @@ const SEARCH = gql`
         hasFile
         fileTextContent
         createdIn
+        fileIpfsPath
       }
     }
   }

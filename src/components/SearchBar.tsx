@@ -1,12 +1,52 @@
-import { Button, Input } from "@material-ui/core"
+import {
+  TextField,
+  InputBaseComponentProps,
+  makeStyles,
+} from "@material-ui/core"
+import { ClassNameMap } from "@material-ui/core/styles/withStyles"
 import { Form, Formik } from "formik"
 import { useHistory } from "react-router-dom"
 
-const SearchBar: React.FC = () => {
+const useStyles = makeStyles({
+  bigSearchBar: {
+    input: {
+      fontSize: "20",
+    },
+  },
+  regularSearchBar: {},
+})
+
+const getChosenStyle = (
+  classes: ClassNameMap<"bigSearchBar" | "regularSearchBar">,
+  big?: boolean
+) => {
+  if (big)
+    return {
+      class: classes.bigSearchBar,
+      inputProps: { min: 0, style: { textAlign: "center" } },
+      InputProps: { style: { fontSize: 40 } },
+    }
+  else
+    return {
+      class: classes.regularSearchBar,
+      inputProps: undefined,
+      InputProps: undefined,
+    }
+}
+
+const SearchBar: React.FC<{ big?: boolean }> = ({ big }) => {
   const history = useHistory()
+  const classes = useStyles()
+
+  const chosenStyle = getChosenStyle(classes, big)
 
   const changeUrl = (substring: string) => {
-    const search = `?substring=${substring}`
+    let search = ""
+    if (parseInt(substring) > 0) {
+      search = `?id=${substring}`
+    } else {
+      search = `?substring=${substring}`
+    }
     history.push({ pathname: "/search", search })
   }
 
@@ -18,12 +58,20 @@ const SearchBar: React.FC = () => {
       {({ handleChange, values }) => {
         return (
           <Form>
-            <Input
+            <TextField
+              inputProps={
+                chosenStyle.inputProps as InputBaseComponentProps | undefined
+              }
+              InputProps={
+                chosenStyle.InputProps as undefined /*its not really undefined lol*/
+              }
+              className={chosenStyle.class}
               name="substring"
               value={values.substring}
               onChange={handleChange}
+              autoComplete="off"
+              placeholder="Search"
             />
-            <Button type="submit">Search 🔎</Button>
           </Form>
         )
       }}

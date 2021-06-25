@@ -1,3 +1,4 @@
+import "@fontsource/roboto"
 import {
   ApolloClient,
   createHttpLink,
@@ -7,9 +8,12 @@ import {
 import ReactDOM from "react-dom"
 import App from "./App"
 import { BrowserRouter as Router } from "react-router-dom"
+import "./index.css"
 
+// http://localhost:4000/graphql
+// https://vagarish.forer.es/graphql
 const httpLink = createHttpLink({
-  uri: "https://vagarish.forer.es/graphql"
+  uri: "https://vagarish.forer.es/graphql",
 })
 
 const client = new ApolloClient({
