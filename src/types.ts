@@ -11,4 +11,5 @@ export interface Evidence {
   hasFile?: boolean
   fileTextContent?: string
   fileIpfsPath?: string
+  byAddress: string
 }

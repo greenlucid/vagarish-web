@@ -40,7 +40,7 @@ const SearchResultsList: React.FC<{ searchResults: SearchResult[] }> = ({
   return (
     <Box className={classes.searchResultsBox}>
       <Masonry
-        breakpointCols={{ default: 3, 2000: 2, 800: 1 }}
+        breakpointCols={{ default: 3, 1600: 2, 800: 1 }}
         className="my-masonry-grid"
         columnClassName="my-masonry-grid_column"
       >

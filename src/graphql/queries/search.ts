@@ -15,6 +15,7 @@ const SEARCH = gql`
         fileTextContent
         createdIn
         fileIpfsPath
+        byAddress
       }
     }
   }
