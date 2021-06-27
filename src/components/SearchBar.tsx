@@ -42,7 +42,9 @@ const SearchBar: React.FC<{ big?: boolean }> = ({ big }) => {
 
   const changeUrl = (substring: string) => {
     let search = ""
-    if (parseInt(substring) > 0) {
+    if (/^0x[a-fA-F0-9]{40}$/.test(substring)) {
+      search = `?by=${substring}`
+    } else if (parseInt(substring) > 0) {
       search = `?id=${substring}`
     } else {
       search = `?substring=${substring}`
@@ -71,6 +73,7 @@ const SearchBar: React.FC<{ big?: boolean }> = ({ big }) => {
               onChange={handleChange}
               autoComplete="off"
               placeholder="Search"
+              fullWidth
             />
           </Form>
         )
