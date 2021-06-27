@@ -1,9 +1,9 @@
 import { gql } from "@apollo/client"
 
 const SEARCH = gql`
-  query Search($substring: String, $klerosLiquidId: Int) {
+  query Search($substring: String, $klerosLiquidId: Int, $by: String) {
     search(
-      options: { substring: $substring, klerosLiquidId: $klerosLiquidId }
+      options: { substring: $substring, klerosLiquidId: $klerosLiquidId, by: $by }
     ) {
       id
       klerosLiquidId

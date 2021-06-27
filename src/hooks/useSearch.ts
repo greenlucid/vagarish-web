@@ -2,9 +2,9 @@ import { useQuery } from "@apollo/client"
 import SEARCH from "../graphql/queries/search"
 import { SearchResult } from "../types"
 
-const useSearch = (substring: string | null, id: number | null): SearchResult[] | null | undefined => {
+const useSearch = (substring: string | null, id: number | null, by: string | null): SearchResult[] | null | undefined => {
   const searchQuery = useQuery<{ search: SearchResult[] }>(SEARCH, {
-    variables: { substring, klerosLiquidId: id },
+    variables: { substring, klerosLiquidId: id, by },
   })
 
   if (!searchQuery.called || searchQuery.loading) {

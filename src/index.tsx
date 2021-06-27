@@ -13,7 +13,7 @@ import "./index.css"
 // http://localhost:4000/graphql
 // https://vagarish.forer.es/graphql
 const httpLink = createHttpLink({
-  uri: "https://vagarish.forer.es/graphql",
+  uri: "http://localhost:4000/graphql",
 })
 
 const client = new ApolloClient({
