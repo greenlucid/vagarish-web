@@ -174,6 +174,25 @@ const EvidenceList: React.FC<{
   const classes = useStyles()
   const remaining =
     searchResult.matchedEvidence.length - MAX_NON_FULL_EVIDENCE_ENTRIES
+  if (searchResult.matchedEvidence.length === 0) {
+    return (
+      <Box className={classes.evidenceListBox}>
+        <Typography variant="h6" color="textPrimary">
+          There is no evidence for this dispute.
+        </Typography>
+        <Typography variant="body1" color="textSecondary">
+          This probably happened because this dispute was not compliant with{" "}
+          <a
+            href="https://developer.kleros.io/en/latest/erc-1497.html"
+            target="_blank"
+          >
+            ERC-1497
+          </a>
+          .
+        </Typography>
+      </Box>
+    )
+  }
   if (
     searchResult.matchedEvidence.length <= MAX_NON_FULL_EVIDENCE_ENTRIES ||
     showFull
