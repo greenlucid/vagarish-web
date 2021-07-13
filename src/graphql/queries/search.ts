@@ -16,6 +16,7 @@ const SEARCH = gql`
         createdIn
         fileIpfsPath
         byAddress
+        timestamp
       }
     }
   }

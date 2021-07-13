@@ -109,6 +109,19 @@ const EvidenceFileContent: React.FC<{
   )
 }
 
+const TimestampDate: React.FC<{ timestamp: number }> = ({ timestamp }) => {
+  const date = new Date(timestamp * 1000)
+  const dateText = date.toLocaleDateString("es-ES")
+  const hourText = date
+    .toLocaleTimeString(undefined, { hour12: false })
+    .slice(0, -3)
+  return (
+    <Typography variant="body2" color="textSecondary">
+      {hourText} {dateText}
+    </Typography>
+  )
+}
+
 const MatchedEvidence: React.FC<{
   matchedEvidence: Evidence
   index: number
@@ -120,7 +133,7 @@ const MatchedEvidence: React.FC<{
       <Box className={classes.evidenceHeading}>
         <EvidenceCount index={index} />
         <ByAddress address={matchedEvidence.byAddress} />
-        <Box />
+        <TimestampDate timestamp={matchedEvidence.timestamp} />
       </Box>
       <EvidenceTextContent
         textContent={matchedEvidence.textContent}

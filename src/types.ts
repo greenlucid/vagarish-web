@@ -12,4 +12,5 @@ export interface Evidence {
   fileTextContent?: string
   fileIpfsPath?: string
   byAddress: string
+  timestamp: number
 }
