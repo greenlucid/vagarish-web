@@ -60,9 +60,11 @@ const APISearchContainer: React.FC<{
   substring: string | null
   id: string | null
   by: string | null
-}> = ({ substring, id, by }) => {
+  courtId: string | null
+}> = ({ substring, id, by, courtId }) => {
   const givenId = id ? parseInt(id) : null
-  const searchResults = useSearch(substring, givenId, by)
+  const givenCourtId = courtId ? parseInt(courtId) : null
+  const searchResults = useSearch(substring, givenId, by, givenCourtId)
   if (searchResults === undefined) return null
   if (searchResults === null) return <div>There was an issue</div>
 
@@ -73,11 +75,12 @@ const QueryContainer: React.FC<{
   substring: string | null
   id: string | null
   by: string | null
-}> = ({ substring, id, by }) => {
+  courtId: string | null
+}> = ({ substring, id, by, courtId }) => {
   // nulls if query is incorrect
-  if (!substring && !id && !by) return null
+  if (!substring && !id && !by && !courtId) return null
 
-  return <APISearchContainer substring={substring} id={id} by={by} />
+  return <APISearchContainer substring={substring} id={id} by={by} courtId={courtId} />
 }
 
 const SearchContainer: React.FC = () => {
@@ -90,6 +93,7 @@ const SearchContainer: React.FC = () => {
         substring={query.get("substring")}
         id={query.get("id")}
         by={query.get("by")}
+        courtId={query.get("courtId")}
       />
     </>
   )

@@ -20,6 +20,12 @@ const Footer: React.FC = () => {
           GitHub repo. Report your issues and suggestions here.
         </a>
       </Typography>
+      <Box />
+      <Typography variant="body1">
+        <a href="https://github.com/greenlucid/vagarish-web">
+          Instructions
+        </a>
+      </Typography>
     </Box>
   )
 }

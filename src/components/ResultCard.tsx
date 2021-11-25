@@ -55,11 +55,25 @@ const EvidenceCount: React.FC<{ index: number }> = ({ index }) => {
 
 const ByAddress: React.FC<{ address: string }> = ({ address }) => {
   return (
-    <LinkMui href={`https://etherscan.io/address/${address}`} target="_blank">
+    <>
       <Typography variant="body2" color="textSecondary">
-        {`by ${address}`}
+        <Link
+          to={{
+            pathname: "/search",
+            search: `?by=${address}`,
+          }}
+        >
+          {`by ${address}`}
+        </Link>
       </Typography>
-    </LinkMui>
+      <Box />
+      <LinkMui href={`https://etherscan.io/address/${address}`} target="_blank">
+        <img
+          src="https://etherscan.io/images/favicon3.ico"
+          style={{ maxHeight: 17 }}
+        />
+      </LinkMui>
+    </>
   )
 }
 
@@ -162,6 +176,16 @@ const ResultLinks: React.FC<{ searchResult: SearchResult }> = ({
           }}
         >
           {`#${searchResult.klerosLiquidId}`}
+        </Link>
+      </Typography>
+      <Typography variant="h6">
+        <Link
+          to={{
+            pathname: "/search",
+            search: `?courtId=${searchResult.courtId}`
+          }}
+        >
+          {`Court #${searchResult.courtId}`}
         </Link>
       </Typography>
       <Typography variant="h6">

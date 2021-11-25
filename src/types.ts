@@ -3,6 +3,7 @@ export interface SearchResult {
   klerosLiquidId: string
   arbitrable: string
   matchedEvidence: Evidence[]
+  courtId: number
 }
 
 export interface Evidence {
